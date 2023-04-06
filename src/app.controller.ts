@@ -32,11 +32,6 @@ export class AppController {
   // Nest 는 @Query() , @Param(key?: string), @Body() 데커레이터를 이용해서 요청에 포함된 쿼리 매개변수, 패스(경로) 매개변수, 본문body 을 쉽게 받을 수 있게 해줍니다.
 
 
-  // 응답
-
-  // 앞에서 nest g resource Users 명령어로 USERS 리소스에 대한 CRUD API 를 만들어봤습니다.
-  // 서버를 실행하면 어떤 라우팅 패스를 통해 요청을 받을 수 있는지 콘솔 로그를 통해 확인할 수 있습니다.
-
   
 
 

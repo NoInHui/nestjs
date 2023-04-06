@@ -95,7 +95,38 @@ export class UsersController {
   // 라우트 매개변수를 전달받는 방법은 2가지가 있습니다.
   // 먼저 매개변수가 여러 개 전달될 경우 객체로 한 번에 받는 방법입니다.
   // 이 방법은 params 의 타입이 any 가 되어 권장하지 않습니다.
+  // 물론 라우트 매개변수는 타입이 항상 string 이기 때문에 명시적으로 { [key: string] : string } 타입을 지정해도 됩니다.
+
+  // http://localhost:3000/users/aincg1001/memo/memo123
+  // @Delete(':userId/memo/:memoId')
+  // deleteUserMemo(@Param() params: {[key: string] : string}) {
+  //   console.log(params);
+  //   return `userId : ${params.userId}, memoId : ${params.memoId}`;
+  // }
   
+  // 더 일반적인 방법은 다음 코드처럼 라우팅 매개변수를 따로 받는 것입니다.
+  // REST API 를 구성할 때는 라우팅 매개변수의 개수가 너무 많아지지 않게 설계하는 것이 좋기 때문에 따로 받아도 코드가 많이 길어지지는 않습니다.
+  @Delete(':userId/memo/:memoId')
+  deleteUserMemo(
+    @Param('userId') userId: string,
+    @Param('memoId') memoId: string,
+  ) {
+    console.log(userId, memoId);
+    return `userId : ${userId}, memoId : ${memoId}`;
+  }
+
+  // 하위 도메인 라우팅
+
+  // 서버에서 제공하는 기능을 API 로 외부로 공개하기로 했다고 가정합시다.
+  // 현재 회사가 사용하고 있는 도메인은 example.com 이고 API 요청은 api.example.com 으로 받기로 했습니다.ㅣ
+
+  // 즉, http://example.com, http://api.example.com 로 들어온 요청을 서로 다르게 처리하고 싶다고 합시다.
+  // 또한 하위 도메인에서 처리하지 못하는 요청은 원래 도메인에서 처리되도록 하고 싶다고 합시다.
+  // 이런 경우 하위 도메인 라우팅 기법을 쓸 수 있습니다.
+
+  // 먼저 새로운 컨트롤러를 생성합시다.
+  // 이후 컴포넌트 생성에 대해 자세한 설명을 생략하겠습니다.
+  // $ nest g co Api
 
 
   
