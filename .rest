@@ -1,0 +1,9 @@
+# VS extensions marketplace -> REST Client 설치
+# https://blog.jiniworld.me/144
+
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/users
+
